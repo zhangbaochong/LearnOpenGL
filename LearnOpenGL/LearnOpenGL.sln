@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3_shaders_class", "src\1.ge
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4.1_textures", "src\1.getting_started\4.1_textures\4.1_textures.vcxproj", "{1559AA8D-F0EC-4AD9-9614-AA06CFE46FAF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "coordinate_systems", "src\1.getting_started\6.1.coordinate_systems\coordinate_systems.vcxproj", "{ED2DDE9B-3D64-4501-A055-083E58BA2584}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{1559AA8D-F0EC-4AD9-9614-AA06CFE46FAF}.Release|x64.Build.0 = Release|x64
 		{1559AA8D-F0EC-4AD9-9614-AA06CFE46FAF}.Release|x86.ActiveCfg = Release|Win32
 		{1559AA8D-F0EC-4AD9-9614-AA06CFE46FAF}.Release|x86.Build.0 = Release|Win32
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Debug|x64.ActiveCfg = Debug|x64
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Debug|x64.Build.0 = Debug|x64
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Debug|x86.ActiveCfg = Debug|Win32
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Debug|x86.Build.0 = Debug|Win32
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Release|x64.ActiveCfg = Release|x64
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Release|x64.Build.0 = Release|x64
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Release|x86.ActiveCfg = Release|Win32
+		{ED2DDE9B-3D64-4501-A055-083E58BA2584}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
