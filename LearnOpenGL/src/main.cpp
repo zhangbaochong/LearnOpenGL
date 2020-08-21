@@ -1,22 +1,32 @@
+#include <map>
+#include <string>
+#include <iostream>
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
-#include <iostream>
+#include "scenes\BaseScene.hpp"
+#include "scenes\1.getting_started\HelloTriangleScene.h"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+std::map<std::string, BaseScene*> g_scenes = {
+    {"HelloTriangle", new HelloTriangleScene()}
+};
 
-
-int main()
+BaseScene* getScene(std::string sceneName)
 {
+    return g_scenes[sceneName];
+}
+
+int main() {
+    BaseScene* scene = getScene("HelloTriangle");
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "hello opengl", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(scene->getWidth(), scene->getHeight(), "LearnOpenGL", nullptr, nullptr);
 	if (!window)
 	{
 		std::cout << "failed to create window!" << std::endl;
@@ -24,8 +34,7 @@ int main()
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
+	glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 	// 初始化glad
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -33,25 +42,28 @@ int main()
 		return -1;
 	}
 
-	// render loop
+	scene->onInit();
+
 	while (!glfwWindowShouldClose(window))
 	{
 		// 输入
 		processInput(window);
 
-		// 渲染指令
-		glClearColor(0.1f, 0.2f, 0.3f, 0.5f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		scene->onGUI();
+
+		scene->onRender();
+
 		// 检查并调用事件，交换缓冲
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
 	glfwTerminate();
+	scene->onRelease();
 	return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 }

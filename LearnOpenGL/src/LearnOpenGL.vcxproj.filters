@@ -15,16 +15,32 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="shaders_class.cpp">
+    <ClInclude Include="utils\shader_m.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\shader_s.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\BaseScene.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\1.getting_started\HelloTriangleScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\1.getting_started\HelloTriangleScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader.fs">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="shader.vs">
-      <Filter>源文件</Filter>
-    </None>
+    <None Include="shaders\1.getting_started\HelloTriangle.frag" />
+    <None Include="shaders\1.getting_started\HelloTriangle.vert" />
   </ItemGroup>
 </Project>
