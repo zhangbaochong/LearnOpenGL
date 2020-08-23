@@ -43,8 +43,15 @@ void HelloTriangleScene::onRender()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
+
+void HelloTriangleScene::onGUI()
+{
+	bool test;
+	ImGui::Begin("Another Window", &test);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+	ImGui::Text("Hello from another window!");
+	ImGui::End();
+}
+
 void HelloTriangleScene::onRelease()
 {
 }
-
-void HelloTriangleScene::onGUI(){}
