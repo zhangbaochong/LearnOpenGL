@@ -1,6 +1,6 @@
 #include "HelloTriangleScene.h"
 
-HelloTriangleScene::HelloTriangleScene()
+HelloTriangleScene::HelloTriangleScene(): m_VAO(0), m_VBO(0)
 {
 }
 
@@ -46,10 +46,7 @@ void HelloTriangleScene::onRender()
 
 void HelloTriangleScene::onGUI()
 {
-	bool test;
-	ImGui::Begin("Another Window", &test);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-	ImGui::Text("Hello from another window!");
-	ImGui::End();
+
 }
 
 void HelloTriangleScene::onRelease()

@@ -1,11 +1,6 @@
 #include <map>
 #include <string>
-#include <iostream>
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
-#include <imgui\imgui.h>
-#include <imgui\imgui_impl_glfw.h>
-#include <imgui\imgui_impl_opengl3.h>
+#include "CommonHeader.h"
 #include "scenes\BaseScene.hpp"
 #include "scenes\1.getting_started\HelloTriangleScene.h"
 
@@ -27,7 +22,10 @@ BaseScene* getScene(std::string sceneName)
 
 
 int main() {
-    BaseScene* scene = getScene("HelloTriangle");
+	std::string sceneName = "HelloTriangle";
+
+    BaseScene* scene = getScene(sceneName);
+	Dashboard::initSceneName(sceneName);
 
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -65,6 +63,8 @@ int main() {
 		scene->onRender();
 
 		scene->onGUI();
+
+		Dashboard::draw(60.23);
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

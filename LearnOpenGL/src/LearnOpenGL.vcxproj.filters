@@ -51,6 +51,12 @@
     <ClInclude Include="imgui\imgui_impl_opengl3.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CommonHeader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="guis\Dashboard.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,6 +84,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="guis\Dashboard.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

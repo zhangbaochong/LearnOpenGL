@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommonHeader.h" />
+    <ClInclude Include="guis\Dashboard.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw.h" />
@@ -158,6 +160,7 @@
     <ClInclude Include="utils\shader_s.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="guis\Dashboard.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
