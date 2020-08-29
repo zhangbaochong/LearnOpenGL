@@ -3,6 +3,7 @@
 #include "CommonHeader.h"
 #include "scenes\BaseScene.hpp"
 #include "scenes\1.getting_started\HelloTriangleScene.h"
+#include "scenes\1.getting_started\HelloTextureScene.h"
 
 void initImgui(GLFWwindow* window);
 void imguiNewFrame();
@@ -11,7 +12,8 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 std::map<std::string, BaseScene*> g_scenes = {
-    {"HelloTriangle", new HelloTriangleScene()}
+    {"HelloTriangle", new HelloTriangleScene()},
+	 {"HelloTexture", new HelloTextureScene()}
 };
 
 BaseScene* getScene(std::string sceneName)
@@ -22,7 +24,8 @@ BaseScene* getScene(std::string sceneName)
 
 
 int main() {
-	std::string sceneName = "HelloTriangle";
+	//std::string sceneName = "HelloTriangle";
+	std::string sceneName = "HelloTexture";
 
     BaseScene* scene = getScene(sceneName);
 	Dashboard::initSceneName(sceneName);
