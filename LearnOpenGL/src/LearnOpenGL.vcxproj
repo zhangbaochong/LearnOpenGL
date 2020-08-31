@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="guis\Dashboard.h" />
+    <ClInclude Include="scenes\1.getting_started\HelloCoordinateSystemScene.h" />
     <ClInclude Include="scenes\1.getting_started\HelloTextureScene.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -161,8 +162,10 @@
     <ClInclude Include="utils\shader_s.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
     <ClCompile Include="guis\Dashboard.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="scenes\1.getting_started\HelloCoordinateSystemScene.cpp" />
     <ClCompile Include="scenes\1.getting_started\HelloTextureScene.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -174,6 +177,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\1.getting_started\HelloCoordinateSystem.frag" />
+    <None Include="shaders\1.getting_started\HelloCoordinateSystem.vert" />
     <None Include="shaders\1.getting_started\HelloTexture.frag" />
     <None Include="shaders\1.getting_started\HelloTexture.vert" />
     <None Include="shaders\1.getting_started\HelloTriangle.frag" />

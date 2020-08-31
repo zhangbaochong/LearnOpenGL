@@ -1,6 +1,4 @@
 #include "HelloTextureScene.h"
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
 
 HelloTextureScene::HelloTextureScene() : m_VAO(0), m_VBO(0), m_EBO(0)
 {

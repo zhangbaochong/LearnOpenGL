@@ -2,6 +2,7 @@
 #include <memory>
 #include "../BaseScene.hpp"
 #include "../../utils/shader_m.h"
+#include "CommonHeader.h"
 
 class HelloTextureScene : public BaseScene
 {

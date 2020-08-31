@@ -60,6 +60,9 @@
     <ClInclude Include="scenes\1.getting_started\HelloTextureScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="scenes\1.getting_started\HelloCoordinateSystemScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,11 +98,19 @@
     <ClCompile Include="scenes\1.getting_started\HelloTextureScene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\1.getting_started\HelloCoordinateSystemScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\includes\stb_image\stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\1.getting_started\HelloTriangle.frag" />
     <None Include="shaders\1.getting_started\HelloTriangle.vert" />
     <None Include="shaders\1.getting_started\HelloTexture.frag" />
     <None Include="shaders\1.getting_started\HelloTexture.vert" />
+    <None Include="shaders\1.getting_started\HelloCoordinateSystem.frag" />
+    <None Include="shaders\1.getting_started\HelloCoordinateSystem.vert" />
   </ItemGroup>
 </Project>

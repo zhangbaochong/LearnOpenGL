@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <imgui\imgui.h>
 
 class BaseScene 
 {

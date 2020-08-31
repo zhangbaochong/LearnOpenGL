@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef __COMMON_HEADER_H__
+#define __COMMON_HEADER_H__
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -13,3 +13,5 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include "guis/Dashboard.h"
+#include "stb_image/stb_image.h"
+#endif
