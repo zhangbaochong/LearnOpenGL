@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="utils\Camera.h" />
     <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="guis\Dashboard.h" />
     <ClInclude Include="scenes\1.getting_started\HelloCoordinateSystemScene.h" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
+    <ClCompile Include="utils\Camera.cpp" />
     <ClCompile Include="guis\Dashboard.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="scenes\1.getting_started\HelloCoordinateSystemScene.cpp" />

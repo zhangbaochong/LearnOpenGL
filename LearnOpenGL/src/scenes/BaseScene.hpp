@@ -1,13 +1,13 @@
 #pragma once
-#include <iostream>
+#include "CommonHeader.h"
 
 class BaseScene 
 {
 public:
     BaseScene() 
     {
-        this->m_screenWidth = 1024;
-        this->m_screenHeight = 768;
+        this->m_screenWidth = 1440;
+        this->m_screenHeight = 900;
     }
     virtual ~BaseScene() {}
 
@@ -16,10 +16,13 @@ protected:
     int m_screenHeight;
 
 public:
-    virtual void onInit() = 0;
-    virtual void onRender() = 0;
-    virtual void onRelease() = 0;
-    virtual void onGUI() = 0;
+    virtual void onInit() {}
+    virtual void onRender() {}
+    virtual void onRelease() {}
+    virtual void onGUI() {}
+    virtual void handleInput(GLFWwindow* wnd) {}
+    virtual void onMouseMoveCallback(GLFWwindow* window, double xpos, double ypos) {}
+    virtual void onMouseScrollCallBack(GLFWwindow* window, double xoffset, double yoffset) {}
 
     int getWidth()
     {

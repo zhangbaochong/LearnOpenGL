@@ -11,6 +11,9 @@ void imguiNewFrame();
 void releaseImgui();
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
+void onMouseMove(GLFWwindow* window, double xpos, double ypos);
+void onMouseScroll(GLFWwindow* window, double xoffset, double yoffset);
+void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 std::map<std::string, BaseScene*> g_scenes = {
     {"HelloTriangle", new HelloTriangleScene()},
@@ -22,7 +25,6 @@ BaseScene* getScene(std::string sceneName)
 {
     return g_scenes[sceneName];
 }
-
 
 
 int main() {
@@ -46,6 +48,12 @@ int main() {
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetCursorPosCallback(window, onMouseMove);
+	glfwSetScrollCallback(window, onMouseScroll);
+	glfwSetKeyCallback(window, onKeyEvent);
+
 	glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 	// ³õÊ¼»¯glad
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -55,7 +63,7 @@ int main() {
 	}
 
 	scene->onInit();
-
+	glfwSetWindowUserPointer(window, scene);
 	initImgui(window);
 	
 	while (!glfwWindowShouldClose(window))
@@ -127,4 +135,41 @@ void releaseImgui()
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
+}
+
+bool IsConsoleOpen = true;
+bool IgnoreInput = false;
+
+void onMouseMove(GLFWwindow* window, double xpos, double ypos)
+{
+	if (Dashboard::s_enabledCursor)
+		return;
+	auto painter = static_cast<BaseScene*>(glfwGetWindowUserPointer(window));
+	if (painter != nullptr)
+		painter->onMouseMoveCallback(window, xpos, ypos);
+}
+
+void onMouseScroll(GLFWwindow* window, double xoffset, double yoffset)
+{
+	if (Dashboard::s_enabledCursor)
+		return;
+	auto painter = static_cast<BaseScene*>(glfwGetWindowUserPointer(window));
+	if (painter != nullptr)
+		painter->onMouseScrollCallBack(window, xoffset, yoffset);
+}
+
+void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_Y && action == GLFW_PRESS)
+	{
+		Dashboard::s_enabledCursor = !Dashboard::s_enabledCursor;
+		if (Dashboard::s_enabledCursor)
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+		else
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		}
+	}
 }

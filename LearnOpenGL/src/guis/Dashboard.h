@@ -9,8 +9,10 @@ class Dashboard
 public:
     static void initSceneName(std::string sceneName);
     static void draw(float fps);
+    static void setEnabledCursor(bool status);
 
-private:
+public:
     static std::string s_sceneName;
+    static bool s_enabledCursor;
 };
 

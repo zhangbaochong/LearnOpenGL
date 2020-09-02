@@ -1,10 +1,16 @@
 #include "Dashboard.h"
 
 std::string Dashboard::s_sceneName = "LearnOpenGL Scene";
+bool Dashboard::s_enabledCursor = false;
 
 void Dashboard::initSceneName(std::string sceneName)
 {
     Dashboard::s_sceneName = sceneName;
+}
+
+void Dashboard::setEnabledCursor(bool status)
+{
+	Dashboard::s_enabledCursor = status;
 }
 
 void Dashboard::draw(float fps)
@@ -23,5 +29,17 @@ void Dashboard::draw(float fps)
 		"SceneName : %s\n", Dashboard::s_sceneName.c_str());
 	ImGui::Separator();
 	ImGui::Text("FPS : %.1f", fps);
+	ImGui::Separator();
+	std::string enabledCursorStr;
+	if (Dashboard::s_enabledCursor)
+	{
+		enabledCursorStr = "true";
+	}
+	else
+	{
+		enabledCursorStr = "false";
+	}
+	ImGui::Text("Enabled Cursor(Y): %s", enabledCursorStr.c_str());
 	ImGui::End();
 }
+
