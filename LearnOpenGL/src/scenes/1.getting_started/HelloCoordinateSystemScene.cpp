@@ -112,7 +112,6 @@ void HelloCoordinateSystemScene::onRender()
 
 void HelloCoordinateSystemScene::onGUI()
 {
-
 }
 
 void HelloCoordinateSystemScene::onRelease()
