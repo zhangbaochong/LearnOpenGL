@@ -21,9 +21,6 @@
     <ClInclude Include="utils\shader_s.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="scenes\BaseScene.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="scenes\1.getting_started\HelloTriangleScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -64,6 +61,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="utils\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MainCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\1.getting_started\HelloCameraScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Mouse.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\BaseScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -108,6 +120,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="utils\Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\1.getting_started\HelloCameraScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Timer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Mouse.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="scenes\BaseScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\MainCamera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

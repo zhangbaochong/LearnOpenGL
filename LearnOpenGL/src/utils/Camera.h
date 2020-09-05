@@ -11,10 +11,10 @@ enum Camera_Movement {
 class Camera
 {
 public:
-    Camera(glm::vec3 postion=glm::vec3(0.f, 1.f, 10.f));
+    Camera(glm::vec3 position=glm::vec3(0.f, 1.f, -3.f));
     virtual ~Camera();
 public:
-    glm::vec3 m_postion;
+    glm::vec3 m_position;
     glm::vec4 m_backgroudColor;
     float m_FOV;
     float m_near;

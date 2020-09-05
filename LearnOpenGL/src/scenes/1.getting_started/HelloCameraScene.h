@@ -4,11 +4,11 @@
 #include "../../utils/shader_m.h"
 #include "CommonHeader.h"
 
-class HelloCoordinateSystemScene : public BaseScene
+class HelloCameraScene : public BaseScene
 {
 public:
-    HelloCoordinateSystemScene();
-    virtual ~HelloCoordinateSystemScene();
+    HelloCameraScene();
+    virtual ~HelloCameraScene();
 
 private:
     std::shared_ptr<Shader> m_shader;

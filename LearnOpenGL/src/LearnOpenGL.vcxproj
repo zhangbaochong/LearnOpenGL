@@ -144,6 +144,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="utils\Mouse.h" />
+    <ClInclude Include="scenes\1.getting_started\HelloCameraScene.h" />
+    <ClInclude Include="utils\Timer.h" />
     <ClInclude Include="utils\Camera.h" />
     <ClInclude Include="CommonHeader.h" />
     <ClInclude Include="guis\Dashboard.h" />
@@ -158,12 +161,18 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="scenes\1.getting_started\HelloTriangleScene.h" />
-    <ClInclude Include="scenes\BaseScene.hpp" />
+    <ClInclude Include="scenes\BaseScene.h" />
+    <ClInclude Include="utils\MainCamera.h" />
     <ClInclude Include="utils\shader_m.h" />
     <ClInclude Include="utils\shader_s.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
+    <ClCompile Include="scenes\BaseScene.cpp" />
+    <ClCompile Include="utils\MainCamera.cpp" />
+    <ClCompile Include="utils\Mouse.cpp" />
+    <ClCompile Include="scenes\1.getting_started\HelloCameraScene.cpp" />
+    <ClCompile Include="utils\Timer.cpp" />
     <ClCompile Include="utils\Camera.cpp" />
     <ClCompile Include="guis\Dashboard.cpp" />
     <ClCompile Include="glad.c" />

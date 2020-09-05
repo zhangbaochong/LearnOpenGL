@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "../BaseScene.hpp"
+#include "../BaseScene.h"
 #include "../../utils/shader_m.h"
 #include "CommonHeader.h"
 

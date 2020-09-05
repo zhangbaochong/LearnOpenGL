@@ -1,10 +1,12 @@
 #include <map>
 #include <string>
 #include "CommonHeader.h"
-#include "scenes\BaseScene.hpp"
+#include "utils\Timer.h"
+#include "scenes\BaseScene.h"
 #include "scenes\1.getting_started\HelloTriangleScene.h"
 #include "scenes\1.getting_started\HelloTextureScene.h"
 #include "scenes\1.getting_started\HelloCoordinateSystemScene.h"
+#include "scenes\1.getting_started\HelloCameraScene.h"
 
 void initImgui(GLFWwindow* window);
 void imguiNewFrame();
@@ -17,8 +19,9 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 
 std::map<std::string, BaseScene*> g_scenes = {
     {"HelloTriangle", new HelloTriangleScene()},
-	 {"HelloTexture", new HelloTextureScene()},
-	 {"HelloCoordinateSystem", new HelloCoordinateSystemScene()}
+	{"HelloTexture", new HelloTextureScene()},
+	{"HelloCoordinateSystem", new HelloCoordinateSystemScene()},
+	{"HelloCamera", new HelloCameraScene()}
 };
 
 BaseScene* getScene(std::string sceneName)
@@ -30,7 +33,8 @@ BaseScene* getScene(std::string sceneName)
 int main() {
 	//std::string sceneName = "HelloTriangle";
 	//std::string sceneName = "HelloTexture";
-	std::string sceneName = "HelloCoordinateSystem";
+	//std::string sceneName = "HelloCoordinateSystem";
+	std::string sceneName = "HelloCamera";
 
     BaseScene* scene = getScene(sceneName);
 	Dashboard::initSceneName(sceneName);
@@ -66,19 +70,39 @@ int main() {
 	glfwSetWindowUserPointer(window, scene);
 	initImgui(window);
 	
+	int frameCount = 0;
+
+	float lastTime = glfwGetTime();
+	float lastTimeForFPS = lastTime;
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 		
+		// ¼ÆËãdeltaTime
+		float currentTime = glfwGetTime();
+		Timer::deltaTime = currentTime - lastTime;
+		lastTime = currentTime;
+		// ¼ÆËãfps
+		++frameCount;
+		if (currentTime - lastTimeForFPS > 1.f)
+		{
+			Timer::FPS = frameCount;
+			frameCount = 0;
+			lastTimeForFPS = currentTime;
+		}
+
 		imguiNewFrame();
 		// ÊäÈë
 		processInput(window);
 
+		glm::vec4 color = MainCamera::getInstance()->m_backgroudColor;
+		glClearColor(color.x, color.y, color.z, color.w);
 		scene->onRender();
 
 		scene->onGUI();
 
-		Dashboard::draw(60.23);
+		Dashboard::draw(Timer::FPS);
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -97,13 +121,6 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow* window)
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
-}
 
 void initImgui(GLFWwindow* window)
 {
@@ -137,9 +154,6 @@ void releaseImgui()
 	ImGui::DestroyContext();
 }
 
-bool IsConsoleOpen = true;
-bool IgnoreInput = false;
-
 void onMouseMove(GLFWwindow* window, double xpos, double ypos)
 {
 	if (Dashboard::s_enabledCursor)
@@ -152,7 +166,9 @@ void onMouseMove(GLFWwindow* window, double xpos, double ypos)
 void onMouseScroll(GLFWwindow* window, double xoffset, double yoffset)
 {
 	if (Dashboard::s_enabledCursor)
+	{
 		return;
+	}
 	auto painter = static_cast<BaseScene*>(glfwGetWindowUserPointer(window));
 	if (painter != nullptr)
 		painter->onMouseScrollCallBack(window, xoffset, yoffset);
@@ -172,4 +188,20 @@ void onKeyEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		}
 	}
+}
+
+void processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+	if (Dashboard::s_enabledCursor)
+	{
+		return;
+	}
+
+	auto painter = static_cast<BaseScene*>(glfwGetWindowUserPointer(window));
+	if (painter != nullptr)
+		painter->handleInput(window);
 }

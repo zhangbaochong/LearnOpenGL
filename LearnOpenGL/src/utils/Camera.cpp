@@ -1,6 +1,7 @@
 #include "Camera.h"
+#include "Timer.h"
 
-Camera::Camera(glm::vec3 postion = glm::vec3(0.f, 1.f, 10.f)): 
+Camera::Camera(glm::vec3 position): 
     m_FOV(45.f), 
     m_near(0.3f), 
     m_far(1000.f),
@@ -9,11 +10,11 @@ Camera::Camera(glm::vec3 postion = glm::vec3(0.f, 1.f, 10.f)):
     m_front(glm::vec3(0.f, 0.f, -1.f)),
     m_yaw(-90.f),
     m_pitch(0.f),
-    m_movementSpeed(0.3f),
-    m_mouseSensitivity(0.25f),
+    m_movementSpeed(3.f),
+    m_mouseSensitivity(0.05f),
     m_aspect(1440.f / 900.f)
 {
-    this->m_position = postion;
+    this->m_position = position;
 }
 
 Camera::~Camera()
@@ -72,7 +73,7 @@ void Camera::processMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean co
 void Camera::processMouseScroll(GLfloat yoffset)
 {
     if (this->m_FOV >= 1.0f && this->m_FOV <= 60.0f)
-        this->m_FOV -= yoffset * Time::deltaTime;
+        this->m_FOV -= yoffset * Timer::deltaTime;
     if (this->m_FOV <= 1.0f)
         this->m_FOV = 1.0f;
     if (this->m_FOV >= 60.0f)
