@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="guis\DebugPanel.h" />
     <ClInclude Include="utils\Mouse.h" />
     <ClInclude Include="scenes\1.getting_started\HelloCameraScene.h" />
     <ClInclude Include="utils\Timer.h" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
+    <ClCompile Include="guis\DebugPanel.cpp" />
     <ClCompile Include="scenes\BaseScene.cpp" />
     <ClCompile Include="utils\MainCamera.cpp" />
     <ClCompile Include="utils\Mouse.cpp" />

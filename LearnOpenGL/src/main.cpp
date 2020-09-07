@@ -103,6 +103,7 @@ int main() {
 		scene->onGUI();
 
 		Dashboard::draw(Timer::FPS);
+		DebugPanel::draw();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

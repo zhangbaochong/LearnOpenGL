@@ -13,5 +13,6 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include "guis/Dashboard.h"
+#include "guis/DebugPanel.h"
 #include "stb_image/stb_image.h"
 #endif

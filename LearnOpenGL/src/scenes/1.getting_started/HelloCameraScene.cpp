@@ -80,6 +80,8 @@ void HelloCameraScene::onInit()
 
 	// ø™∆Ù…Ó∂»≤‚ ‘
 	glEnable(GL_DEPTH_TEST);
+
+	DebugPanel::LogInfo("Test log.");
 }
 
 void HelloCameraScene::onRender()
