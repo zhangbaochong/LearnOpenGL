@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{da62db5e-31f7-4900-8936-e6192d041667}</ProjectGuid>
     <RootNamespace>src</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\git\LearnOpenGL\LearnOpenGL\src;E:\git\LearnOpenGL\LearnOpenGL\includes;..\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>E:\git\LearnOpenGL\LearnOpenGL\src;E:\git\LearnOpenGL\LearnOpenGL\includes;..\includes;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>D:\git\LearnOpenGL\LearnOpenGL\includes;D:\git\LearnOpenGL\LearnOpenGL\src;..\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>D:\git\LearnOpenGL\LearnOpenGL\lib;D:\git\LearnOpenGL\LearnOpenGL\includes;D:\git\LearnOpenGL\LearnOpenGL\src;..\includes;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -123,8 +123,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\git\LearnOpenGL\LearnOpenGL\lib;..\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\git\LearnOpenGL\LearnOpenGL\lib;..\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
+    <ClCompile Include="glad.c" />
     <ClCompile Include="guis\DebugPanel.cpp" />
     <ClCompile Include="scenes\BaseScene.cpp" />
     <ClCompile Include="utils\MainCamera.cpp" />
@@ -177,7 +178,6 @@
     <ClCompile Include="utils\Timer.cpp" />
     <ClCompile Include="utils\Camera.cpp" />
     <ClCompile Include="guis\Dashboard.cpp" />
-    <ClCompile Include="glad.c" />
     <ClCompile Include="scenes\1.getting_started\HelloCoordinateSystemScene.cpp" />
     <ClCompile Include="scenes\1.getting_started\HelloTextureScene.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />

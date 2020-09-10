@@ -41,7 +41,7 @@ int main() {
 
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	GLFWwindow* window = glfwCreateWindow(scene->getWidth(), scene->getHeight(), "LearnOpenGL", nullptr, nullptr);
@@ -138,7 +138,7 @@ void initImgui(GLFWwindow* window)
 
 	// Setup Platform/Renderer bindings
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 460");
+	ImGui_ImplOpenGL3_Init("#version 450");
 }
 
 void imguiNewFrame()

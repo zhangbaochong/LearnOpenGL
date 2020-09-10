@@ -89,9 +89,6 @@
     <ClCompile Include="scenes\1.getting_started\HelloTriangleScene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -141,6 +138,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="guis\DebugPanel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
