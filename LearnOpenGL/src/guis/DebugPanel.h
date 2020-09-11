@@ -12,6 +12,6 @@ public:
 
 private:
     static std::vector<std::string> s_logs;
-    static float s_background[4];
+    static float s_position[3];
 };
 

@@ -4,7 +4,7 @@
 class MainCamera : public Camera
 {
 private:
-    MainCamera(glm::vec3 position = glm::vec3(0.f, 0.f, 3.f));
+    MainCamera(glm::vec3 position = glm::vec3(0.f, 0.f, 5.f));
 
 public:
     static MainCamera* getInstance();

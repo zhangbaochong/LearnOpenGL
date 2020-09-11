@@ -15,7 +15,7 @@ public:
     virtual ~Camera();
 public:
     glm::vec3 m_position;
-    glm::vec4 m_backgroudColor;
+    float m_backgroudColor[4] = { 0.1f, 0.2f, 0.3f, 0.5f };
     float m_FOV;
     float m_near;
     float m_far;

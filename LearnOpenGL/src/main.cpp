@@ -1,12 +1,13 @@
 #include <map>
 #include <string>
 #include "CommonHeader.h"
-#include "utils\Timer.h"
-#include "scenes\BaseScene.h"
-#include "scenes\1.getting_started\HelloTriangleScene.h"
-#include "scenes\1.getting_started\HelloTextureScene.h"
-#include "scenes\1.getting_started\HelloCoordinateSystemScene.h"
-#include "scenes\1.getting_started\HelloCameraScene.h"
+#include "utils/Timer.h"
+#include "scenes/BaseScene.h"
+#include "scenes/1.getting_started/HelloTriangleScene.h"
+#include "scenes/1.getting_started/HelloTextureScene.h"
+#include "scenes/1.getting_started/HelloCoordinateSystemScene.h"
+#include "scenes/1.getting_started/HelloCameraScene.h"
+#include "scenes/2.lighting/HelloLightScene.h"
 
 void initImgui(GLFWwindow* window);
 void imguiNewFrame();
@@ -21,7 +22,8 @@ std::map<std::string, BaseScene*> g_scenes = {
     {"HelloTriangle", new HelloTriangleScene()},
 	{"HelloTexture", new HelloTextureScene()},
 	{"HelloCoordinateSystem", new HelloCoordinateSystemScene()},
-	{"HelloCamera", new HelloCameraScene()}
+	{"HelloCamera", new HelloCameraScene()},
+	{"HelloLight", new HelloLightScene()}
 };
 
 BaseScene* getScene(std::string sceneName)
@@ -34,7 +36,8 @@ int main() {
 	//std::string sceneName = "HelloTriangle";
 	//std::string sceneName = "HelloTexture";
 	//std::string sceneName = "HelloCoordinateSystem";
-	std::string sceneName = "HelloCamera";
+	//std::string sceneName = "HelloCamera";
+	std::string sceneName = "HelloLight";
 
     BaseScene* scene = getScene(sceneName);
 	Dashboard::initSceneName(sceneName);
@@ -96,8 +99,9 @@ int main() {
 		// ÊäÈë
 		processInput(window);
 
-		glm::vec4 color = MainCamera::getInstance()->m_backgroudColor;
-		glClearColor(color.x, color.y, color.z, color.w);
+		glClearColor(MainCamera::getInstance()->m_backgroudColor[0], MainCamera::getInstance()->m_backgroudColor[1], 
+			MainCamera::getInstance()->m_backgroudColor[2], MainCamera::getInstance()->m_backgroudColor[3]);
+		
 		scene->onRender();
 
 		scene->onGUI();

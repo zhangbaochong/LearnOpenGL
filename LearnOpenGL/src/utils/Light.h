@@ -1,21 +1,18 @@
 #pragma once
-#include <memory>
-#include "../BaseScene.h"
-#include "utils/shader_m.h"
 #include "CommonHeader.h"
+#include "utils/shader_m.h"
 
-class HelloCameraScene : public BaseScene
+class Light
 {
 public:
-    HelloCameraScene();
-    virtual ~HelloCameraScene();
+	Light(glm::vec3 position=glm::vec3(0.f, 2.f, 0.f));
+	virtual ~Light();
 
 private:
-    std::shared_ptr<Shader> m_shader;
+	std::shared_ptr<Shader> m_shader;
+	glm::vec3 m_position;
 	GLuint m_VBO;
 	GLuint m_VAO;
-	GLuint m_texture1;
-	GLuint m_texture2;
 	glm::mat4 m_model;
 	glm::mat4 m_view;
 	glm::mat4 m_projection;
@@ -62,12 +59,9 @@ private:
 	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
 	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
+
 public:
-    void onInit();
-    void onRender();
-    void onRelease();
-    void onGUI();
+	void init();
+	void draw();
 };
 
-
- 

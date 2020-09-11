@@ -2,10 +2,9 @@
 #include "utils/MainCamera.h"
 
 std::vector<std::string> DebugPanel::s_logs;
-float DebugPanel::s_background[4] = {
-    MainCamera::getInstance()->m_backgroudColor.x, MainCamera::getInstance()->m_backgroudColor.y, MainCamera::getInstance()->m_backgroudColor.z,
-    MainCamera::getInstance()->m_backgroudColor.w
-};
+float DebugPanel::s_position[3] = { MainCamera::getInstance()->m_position.x, 
+MainCamera::getInstance()->m_position.y, 
+MainCamera::getInstance()->m_position.z };
 
 void DebugPanel::draw()
 {
@@ -18,8 +17,14 @@ void DebugPanel::draw()
 
     if (ImGui::CollapsingHeader("Camera"))
     {
-        ImGui::ColorEdit4("Background", s_background);
-        MainCamera::getInstance()->m_backgroudColor = glm::vec4(s_background[0], s_background[1], s_background[2], s_background[3]);
+        ImGui::ColorEdit4("Background", MainCamera::getInstance()->m_backgroudColor);
+        ImGui::Separator();
+        ImGui::DragFloat3("Postition", s_position, 1.f, -100.f, 100.f, "%.1f");
+        //MainCamera::getInstance()->m_position = { s_position[0], s_position[1], s_position[2] };
+        ImGui::Separator();
+        ImGui::DragFloat("Field of View", &MainCamera::getInstance()->m_FOV);
+        ImGui::DragFloat("Near", &MainCamera::getInstance()->m_near);
+        ImGui::DragFloat("Far", &MainCamera::getInstance()->m_far);
     }
 
     if (ImGui::CollapsingHeader("Logs"))

@@ -5,7 +5,6 @@ Camera::Camera(glm::vec3 position):
     m_FOV(45.f), 
     m_near(0.3f), 
     m_far(1000.f),
-    m_backgroudColor(glm::vec4(0.1f, 0.2f, 0.3f, 0.5f)),
     m_worldUp(glm::vec3(0.0f, 1.0f, 0.0f)),
     m_front(glm::vec3(0.f, 0.f, -1.f)),
     m_yaw(-90.f),

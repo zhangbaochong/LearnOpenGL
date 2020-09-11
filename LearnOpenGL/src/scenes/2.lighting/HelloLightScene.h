@@ -1,17 +1,19 @@
 #pragma once
 #include <memory>
 #include "../BaseScene.h"
+#include "utils/Light.h"
 #include "utils/shader_m.h"
 #include "CommonHeader.h"
 
-class HelloCameraScene : public BaseScene
+class HelloLightScene : public BaseScene
 {
 public:
-    HelloCameraScene();
-    virtual ~HelloCameraScene();
+	HelloLightScene();
+    virtual ~HelloLightScene();
 
 private:
     std::shared_ptr<Shader> m_shader;
+	std::shared_ptr<Light> m_light;
 	GLuint m_VBO;
 	GLuint m_VAO;
 	GLuint m_texture1;
