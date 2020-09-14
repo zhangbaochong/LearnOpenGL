@@ -11,7 +11,7 @@ enum Camera_Movement {
 class Camera
 {
 public:
-    Camera(glm::vec3 position=glm::vec3(0.f, 1.f, -3.f));
+    Camera(glm::vec3 position=glm::vec3(0.f, 1.f, 3.f));
     virtual ~Camera();
 public:
     glm::vec3 m_position;

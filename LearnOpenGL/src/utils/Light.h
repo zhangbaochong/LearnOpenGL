@@ -5,7 +5,7 @@
 class Light
 {
 public:
-	Light(glm::vec3 position=glm::vec3(0.f, 2.f, 0.f));
+	Light(glm::vec3 position=glm::vec3(0.f, 3.f, 0.f));
 	virtual ~Light();
 
 private:
@@ -59,9 +59,11 @@ private:
 	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
 	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
-
+public:
+	float m_lightColor[3] = {1.f, 1.f, 1.f};
 public:
 	void init();
 	void draw();
+	glm::vec3 getPosition() const;
 };
 

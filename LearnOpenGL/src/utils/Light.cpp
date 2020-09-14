@@ -50,3 +50,8 @@ void Light::draw()
 	glBindVertexArray(m_VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
+
+glm::vec3 Light::getPosition() const
+{
+	return m_position;
+}

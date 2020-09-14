@@ -7,7 +7,7 @@ HelloLightScene::HelloLightScene() :
 	m_model = glm::mat4(1.f);
 	m_view = glm::mat4(1.f);
 	m_projection = glm::mat4(1.f);
-	m_model = glm::rotate(m_model, 1.f, glm::vec3(0.5f, 1.0f, 0.0f));
+	m_model = glm::scale(m_model, glm::vec3(2, 2, 2));
 	m_view = MainCamera::getInstance()->getViewMatrix();
 	m_projection = MainCamera::getInstance()->getProjMatrix();
 	m_light = std::make_shared<Light>();
@@ -20,47 +20,6 @@ void HelloLightScene::onInit()
 	m_shader = std::make_shared<Shader>("shaders/2.lighting/HelloLight.vert",
 		"shaders/2.lighting/HelloLight.frag");
 
-	// 生成纹理
-	glGenTextures(1, &m_texture1);
-	glBindTexture(GL_TEXTURE_2D, m_texture1);
-	// 设置环绕过滤方式
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	int width, height, nrChannels;
-	unsigned char* data = stbi_load("../resources/textures/container.jpg", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-		stbi_image_free(data);
-	}
-	else
-	{
-		std::cout << "ERROR: failed to load image." << std::endl;
-	}
-
-	glGenTextures(1, &m_texture2);
-	glBindTexture(GL_TEXTURE_2D, m_texture2);
-	// 设置环绕过滤方式
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	data = stbi_load("../resources/textures/awesomeface.png", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-		stbi_image_free(data);
-	}
-	else
-	{
-		std::cout << "ERROR: failed to load image." << std::endl;
-	}
-
-
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
 
@@ -69,16 +28,14 @@ void HelloLightScene::onInit()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices), m_vertices, GL_STATIC_DRAW);
 
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	// normal attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
 	m_shader->use();
-	m_shader->setInt("texture1", 0);
-	m_shader->setInt("texture2", 1);
-
 	m_light->init();
 	// 开启深度测试
 	glEnable(GL_DEPTH_TEST);
@@ -89,12 +46,7 @@ void HelloLightScene::onRender()
 	// 渲染指令
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// bind Texture
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_texture1);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, m_texture2);
-
+	MainCamera::getInstance()->updateCameraVectors();
 	// 渲染三角形
 	m_shader->use();
 	// 设置变换矩阵
@@ -104,6 +56,12 @@ void HelloLightScene::onRender()
 	m_shader->setMat4("model", m_model);
 	m_shader->setMat4("view", m_view);
 	m_shader->setMat4("projection", m_projection);
+	m_shader->setVec3("lightPos", m_light->getPosition());
+	m_shader->setVec3("viewPos", MainCamera::getInstance()->m_position);
+	m_shader->setVec3("lightColor", m_light->m_lightColor[0], m_light->m_lightColor[1], m_light->m_lightColor[2]);
+	m_shader->setVec3("objectColor", m_objectColor[0], m_objectColor[1], m_objectColor[1]);
+	m_shader->setFloat("ambientStrength", m_ambientStrength);
+	m_shader->setInt("specularGloss", m_specularGloss);
 
 	glBindVertexArray(m_VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -114,6 +72,10 @@ void HelloLightScene::onRender()
 
 void HelloLightScene::onGUI()
 {
+	ImGui::SetNextWindowBgAlpha(0.35f);
+	ImGui::Begin("Light Panel");
+	ImGui::DragInt("m_specularGloss", &m_specularGloss, 1, 0, 256);
+	ImGui::End();
 }
 
 void HelloLightScene::onRelease()
