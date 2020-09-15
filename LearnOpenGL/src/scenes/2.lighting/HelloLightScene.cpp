@@ -7,7 +7,7 @@ HelloLightScene::HelloLightScene() :
 	m_model = glm::mat4(1.f);
 	m_view = glm::mat4(1.f);
 	m_projection = glm::mat4(1.f);
-	m_model = glm::scale(m_model, glm::vec3(2, 2, 2));
+	m_model = glm::scale(m_model, glm::vec3(5, 2, 5));
 	m_view = MainCamera::getInstance()->getViewMatrix();
 	m_projection = MainCamera::getInstance()->getProjMatrix();
 	m_light = std::make_shared<Light>();
@@ -74,7 +74,9 @@ void HelloLightScene::onGUI()
 {
 	ImGui::SetNextWindowBgAlpha(0.35f);
 	ImGui::Begin("Light Panel");
-	ImGui::DragInt("m_specularGloss", &m_specularGloss, 1, 0, 256);
+	ImGui::DragFloat("m_ambientStrength", &m_ambientStrength, 0.1f, 0, 1.f);
+	ImGui::DragInt("specularGloss", &m_specularGloss, 1, 0, 256);
+	ImGui::ColorEdit3("objectColor", m_objectColor);
 	ImGui::End();
 }
 
