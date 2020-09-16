@@ -8,6 +8,7 @@
 #include "scenes/1.getting_started/HelloCoordinateSystemScene.h"
 #include "scenes/1.getting_started/HelloCameraScene.h"
 #include "scenes/2.lighting/HelloLightScene.h"
+#include "scenes/2.lighting/HelloMaterialScene.h"
 
 void initImgui(GLFWwindow* window);
 void imguiNewFrame();
@@ -23,7 +24,8 @@ std::map<std::string, BaseScene*> g_scenes = {
 	{"HelloTexture", new HelloTextureScene()},
 	{"HelloCoordinateSystem", new HelloCoordinateSystemScene()},
 	{"HelloCamera", new HelloCameraScene()},
-	{"HelloLight", new HelloLightScene()}
+	{"HelloLight", new HelloLightScene()},
+	{"HelloMaterial", new HelloMaterialScene()}
 };
 
 BaseScene* getScene(std::string sceneName)
@@ -37,7 +39,8 @@ int main() {
 	//std::string sceneName = "HelloTexture";
 	//std::string sceneName = "HelloCoordinateSystem";
 	//std::string sceneName = "HelloCamera";
-	std::string sceneName = "HelloLight";
+	//std::string sceneName = "HelloLight";
+	std::string sceneName = "HelloMaterial";
 
     BaseScene* scene = getScene(sceneName);
 	Dashboard::initSceneName(sceneName);

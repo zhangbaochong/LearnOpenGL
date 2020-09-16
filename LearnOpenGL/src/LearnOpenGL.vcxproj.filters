@@ -87,6 +87,9 @@
     <ClInclude Include="scenes\2.lighting\HelloLightScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="scenes\2.lighting\HelloMaterialScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -155,6 +158,9 @@
     <ClCompile Include="scenes\2.lighting\HelloLightScene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\2.lighting\HelloMaterialScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\1.getting_started\HelloTriangle.frag" />
@@ -167,5 +173,7 @@
     <None Include="shaders\utils\Light.vert" />
     <None Include="shaders\2.lighting\HelloLight.frag" />
     <None Include="shaders\2.lighting\HelloLight.vert" />
+    <None Include="shaders\2.lighting\HelloMaterial.frag" />
+    <None Include="shaders\2.lighting\HelloMaterial.vert" />
   </ItemGroup>
 </Project>

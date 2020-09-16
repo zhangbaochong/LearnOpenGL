@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="guis\DebugPanel.h" />
+    <ClInclude Include="scenes\2.lighting\HelloMaterialScene.h" />
     <ClInclude Include="scenes\2.lighting\HelloLightScene.h" />
     <ClInclude Include="utils\Light.h" />
     <ClInclude Include="utils\Mouse.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="..\includes\stb_image\stb_image.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="guis\DebugPanel.cpp" />
+    <ClCompile Include="scenes\2.lighting\HelloMaterialScene.cpp" />
     <ClCompile Include="scenes\2.lighting\HelloLightScene.cpp" />
     <ClCompile Include="utils\Light.cpp" />
     <ClCompile Include="scenes\BaseScene.cpp" />
@@ -202,6 +204,8 @@
     <None Include="shaders\1.getting_started\HelloTriangle.vert" />
     <None Include="shaders\2.lighting\HelloLight.frag" />
     <None Include="shaders\2.lighting\HelloLight.vert" />
+    <None Include="shaders\2.lighting\HelloMaterial.frag" />
+    <None Include="shaders\2.lighting\HelloMaterial.vert" />
     <None Include="shaders\utils\Light.frag" />
     <None Include="shaders\utils\Light.vert" />
   </ItemGroup>
